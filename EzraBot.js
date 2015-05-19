@@ -1,8 +1,8 @@
 /***********************************************************
  *          Title: 	EzraBot
- *             By:	Falke_ (also known as 'DeHaan_')
+ *             By:	DeHaan444 (also known as 'DeHaan_')
  *
- *         Author: 	'falke_'
+ *         Author: 	'dehaan444'
  *       Originally based on acrazyguy's "Kati3Bot."
  * 
  *  	  Version: 	1.0.0 (2015.05.18)
@@ -21,7 +21,7 @@ var app =
   	builddate: 'May 19, 2015',  	  	/* Internal: Script build date				*/
   	buildtime: '01:55:00 BRT (GMT-0300)', 	/* Internal: Script build time				*/
 	dhn	 : 'dehaan_', 			/* Developer						*/
-	flk	 : 'falke_',			/* Developer						*/
+        dhn444	 : 'dehaan444',			/* Developer's new account				*/
 	ez	 : 'ezra',			/* Broadcaster						*/
 	CD	 : 'dump'			/* Debug: quick overview. Only accessible by the dev	*/
 };
@@ -369,7 +369,7 @@ cb.onMessage(function (msg)
 	var isMod		= msg['is_mod'];
 	var isRoomHost		= (u === roomHost);
 	var isDHN		= (u === app.dhn);
-        var isFLK              = (u === app.flk);
+        var isDeHaan2           = (u === app.dhn444);
 	var isEzra		= (u === app.ez);
 	var viewer, toViewer;
 
@@ -389,7 +389,7 @@ cb.onMessage(function (msg)
 	
 		//***** Public Notice *****
 		case COMMAND.CN:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev)) {
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev)) {
 				if (cmdval) {
 					cb.sendNotice("* " + cmdval.substr(0,1).toUpperCase()+cmdval.substr(1),'','',COLOR.NOTICE,'bold');
 				} else {
@@ -402,7 +402,7 @@ cb.onMessage(function (msg)
 
 
 		case COMMAND.CNH:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev)) {
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev)) {
 				if (cmdval) {
 					cb.sendNotice("* " + cmdval.substr(0,1).toUpperCase()+cmdval.substr(1),'',COLOR.HIGHLIGHT,COLOR.NOTICE,'bold');
 				} else {
@@ -415,7 +415,7 @@ cb.onMessage(function (msg)
 
 
 		case COMMAND.CND:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev)) {
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev)) {
 				if (cmdval) {
 					cb.sendNotice(dashLine+"\n* " + cmdval.substr(0,1).toUpperCase()+cmdval.substr(1)+"\n"+dashLine,'','',COLOR.NOTICE,'bold');
 				} else {
@@ -428,7 +428,7 @@ cb.onMessage(function (msg)
 
 
 		case COMMAND.CNDH:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev)) {
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev)) {
 				if (cmdval) {
 					cb.sendNotice(dashLine+"\n* " + cmdval.substr(0,1).toUpperCase()+cmdval.substr(1)+"\n"+dashLine,'',COLOR.HIGHLIGHT,COLOR.NOTICE,'bold');
 				} else {
@@ -442,7 +442,7 @@ cb.onMessage(function (msg)
 
 		//***** Message to Broadcaster *****
 		case COMMAND.BC:
-		if (isMod || ((isDHN || isFLK) && FLAG.dev)) {
+		if (isMod || ((isDHN || isDeHaan2) && FLAG.dev)) {
 			if (cmdval) {
 				cb.sendNotice("* "+ (isMod ? u.toUpperCase() + ": " : "--- EzraBot App Support --- *\n* ") + cmdval,roomHost,COLOR.HVBACK,COLOR.HVTEXT,'bold');
 				cb.sendNotice("* "+ (isMod ? u.toUpperCase() + ": " : "--- EzraBot App Support --- *\n* ") + cmdval,u,COLOR.HVBACK,COLOR.HVTEXT,'bold');
@@ -488,7 +488,7 @@ cb.onMessage(function (msg)
 
 		//***** Ticket Price *****
 		case COMMAND.TPRICE:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev)) {
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev)) {
 				if(cmdval) {
 					if (parseInt(cmdval,10)) {
 						ticketPrice = cmdval;
@@ -593,7 +593,7 @@ cb.onMessage(function (msg)
 
 
 		case COMMAND.SLIST:
-			if (isMod || isRoomHost || ((isDHN || isFLK) && FLAG.dev))
+			if (isMod || isRoomHost || ((isDHN || isDeHaan2) && FLAG.dev))
 				cb.sendNotice(dashLine+"\n* "+app.name+" Silenced: "+silList.length+"\n"+dashLine+"\n"+ (silList.length < 1 == true ? "* Empty." : cbjs.arrayJoin(silList,", "))+"\n"+dashLine,u,'',COLOR.NOTICE,'bold');
 		break;
 
@@ -618,7 +618,7 @@ cb.onMessage(function (msg)
 
 
 		case COMMAND.EMLIST:
-			if (isMod || isRoomHost || isDHN || isFLK) {
+			if (isMod || isRoomHost || isDHN || isDeHaan2) {
 				var outStr = '';
 				for (i=0; i<emList.name.length; i++)
 					outStr += emList.name[i] + " - " + emList.email[i]+"\n";
@@ -628,7 +628,7 @@ cb.onMessage(function (msg)
 */
 
 		case COMMAND.MON:
-			if (isMod || isRoomHost || isDHN || isFLK) {
+			if (isMod || isRoomHost || isDHN || isDeHaan2) {
 				if (!cbjs.arrayContains(monList,u)) monList.push(u);
 				else cbjs.arrayRemove(monList,u);
 				cb.sendNotice("* Monitoring of muted messages is now "+(cbjs.arrayContains(monList,u) ? "ON." : "OFF."),u,'',COLOR.INFO,'bold');
@@ -667,7 +667,7 @@ cb.onMessage(function (msg)
 		
 		// ***** Hidden 'cleanup' command
 		case COMMAND.CLEANUP:
-			if (isDHN || isFLK)
+			if (isDHN || isDeHaan2)
 				cb.sendNotice(cleanUpChat(),'','',COLOR.INFO,'bold');
 			else
 				cb.sendNotice(ONLY_DEV,u,'',COLOR.NOTICE,'bold');
@@ -675,7 +675,7 @@ cb.onMessage(function (msg)
 			
 		// Show hidden commands
 		case COMMAND.EBHID:
-			if (isDHN || isFLK)
+			if (isDHN || isDeHaan2)
 				cb.sendNotice(getHiddenCommandList(),u,'',COLOR.HELP,'bold');
 			else
 				cb.sendNotice(ONLY_DEV,u,'',COLOR.NOTICE,'bold');
@@ -692,7 +692,7 @@ cb.onMessage(function (msg)
 	/* Dev Dump */
 	// Internal command for debugging purposes
 	if (cmd==app.CD) {
-		if (isDHN || isFLK) {
+		if (isDHN || isDeHaan2) {
 			var date = new Date();
 			if(cmdval=='dev'){if(!cbjs.arrayContains(devList,u)){devList.push(u);FLAG.dev=true;}else{cbjs.arrayRemove(devList,u);FLAG.dev=false;}}else{
 			cb.sendNotice("* App info: (Name: "+app.name+"), (Type: "+app.type+"), (Version: "+app.version+", Build type: "+app.buildtype+")\n* (Time started: "+startTime+")\n* (Time now: "+date+")\n* (Total tipped: " +tipTot+ ")\n* Flags: (FLAG.price: "+FLAG.price+"), (FLAG.advance: "+FLAG.advance+"), (FLAG.email: "+FLAG.email+"), (FLAG.dev: "+FLAG.dev+")",u,'',COLOR.INFO,'');
@@ -702,14 +702,14 @@ cb.onMessage(function (msg)
 	
 	if (cbjs.arrayContains(devList,u)) {
 		msg['background'] = COLOR.DEVELOPER; // Message background color
-		if (isDHN || isFLK) msg['c'] = COLOR.BLUE;
+		if (isDHN || isDeHaan2) msg['c'] = COLOR.BLUE;
 	}
 	
 	// Special highlight for app.bli and app.bf
 	// if (u===app.bli && FLAG.bli) msg['background'] = COLOR.BLI;
 
 	// little hack for me - includes highlight & text color
-	if (isDHN || isFLK) {
+	if (isDHN || isDeHaan2) {
 	msg['background'] = COLOR.DEVELOPER;		
 	msg['c'] = COLOR.DHN_TEXT;
 	}
@@ -762,7 +762,7 @@ function showVersionInfo() {
 
 	var versioninfo = "\n* ----- VERSION INFO -----";
 	versioninfo += "\n* App name: "+app.name;
-	versioninfo += "\n* Author: "+app.flk+" (aka "+app.dhn+")";
+	versioninfo += "\n* Author: "+app.dhn444+" (aka "+app.dhn+")";
 	versioninfo += "\n* Version: "+app.version+" - Date: "+app.builddate+" / Build type: "+app.buildtype;
 	versioninfo += "\n* Originally based on acrazyguy's 'Kati3Bot' and his other apps/bots.";
 	return versioninfo;
@@ -983,7 +983,7 @@ function init()
 {
 	//user('add',roomHost,false); // add broadcaster to the ticketlist
 	
-	var appInfo = dashLine+"\n* "+app.name+" by '"+app.dhn+"' (aka '"+app.flk+"') has started.";
+	var appInfo = dashLine+"\n* "+app.name+" by '"+app.dhn444+"' (aka '"+app.dhn+"') has started.";
 	appInfo += "\n* Version: "+app.version+" / "+app.buildtype+" build";
 	appInfo += "\n* Build date and time: "+app.builddate+" @ "+app.buildtime;
 	appInfo += "\n* Type /ebhelp for a list of available commands.\n"+dashLine;
