@@ -1,0 +1,2 @@
+# EzraBot
+Custom bot.
