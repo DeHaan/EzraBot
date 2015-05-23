@@ -5,7 +5,7 @@
  *         Author: 	'dehaan_'
  *       Originally based on acrazyguy's "Kati3Bot."
  * 
- *  	  Version: 	1.0.0 (2015.05.18)
+ *  	  Version: 	1.1.0 (2015.05.23)
  *  GitHub branch:	Stable ("master") branch
  *     Build type:      Stable (CB live site)
  **********************************************************/
@@ -15,11 +15,11 @@ var app =
 {
 	name	  : "'EzraBot'",		/* Script name						*/
 	type	  : 'Bot',			/* Script type: bot|app					*/
-	version	  : '1.0.0',			/* Internal: Script version number			*/ 
+	version	  : '1.1.0',			/* Internal: Script version number			*/ 
 //	revision  : 'null',			/* Internal: Script revision				*/
 	buildtype : 'stable',	 		/* Internal: Script build type (stable or dev)		*/
-  	builddate : 'May 19, 2015',  	  	/* Internal: Script build date				*/
-  	buildtime : '01:55:00 BRT (GMT-0300)', 	/* Internal: Script build time				*/
+  	builddate : 'May 23, 2015',  	  	/* Internal: Script build date				*/
+  	buildtime : '02:45:00 BRT (GMT-0300)', 	/* Internal: Script build time				*/
 	dhn	  : 'dehaan_', 			/* Developer						*/
 	ez	  : 'ezra',			/* Broadcaster						*/
 	CD	  : 'dump'			/* Debug: quick overview. Only accessible by the dev	*/
@@ -315,7 +315,6 @@ cb.onTip(function(tip)
 				cb.sendNotice(dashLine+"\n* S L O W E R !\n"+dashLine,'',COLOR.HIGHLIGHT,COLOR.NOTICE,'bold');
 			break;
 			
-			// Mute and unmute: remove ref's to model (again)
 			case cb.settings.muteamt:
 				cb.sendNotice(dashLine+"\n* M U T E D !\n"+dashLine,'',COLOR.HIGHLIGHT,COLOR.NOTICE,'bold');
 			break;
@@ -329,7 +328,6 @@ cb.onTip(function(tip)
 				FLAG.insta ? FLAG.insta = false : FLAG.insta = true;
 			break;
 			
-			// Will be removed / commented if the model wants
 			case cb.settings.denial:
 				cb.sendNotice(dashLine+"\n* "+(FLAG.denial ? "C U M  D E N I A L CANCELLED! \n" : "C U M  D E N I A L ! \n")+dashLine+"\n* Tip "+cb.settings.denial+" tokens to "+(FLAG.denial ? "ENABLE CUM DENIAL." : " CANCEL CUM DENIAL.")+"\n* "+tOptions+"\n"+dashLine,'',COLOR.HIGHLIGHT,COLOR.NOTICE,'bold');
 				FLAG.denial ? FLAG.denial = false : FLAG.denial = true;
@@ -698,11 +696,6 @@ cb.onMessage(function (msg)
 		} // end if u||u||u
 	} // end if cmd=app.CD
 	
-	if (cbjs.arrayContains(devList,u)) {
-		msg['background'] = COLOR.DEVELOPER; // Message background color
-		if (isDHN) msg['c'] = COLOR.BLUE;
-	}
-	
 	// Special highlight for app.bli and app.bf
 	// if (u===app.bli && FLAG.bli) msg['background'] = COLOR.BLI;
 
@@ -725,8 +718,8 @@ cb.onMessage(function (msg)
 
 
 /********** Functions **********/
-function getCommandList()
-{
+getCommandList = function() {
+	
 	var cmdlist = "\n----- EzraBot Commands List -----\n\n";
 	cmdlist += '/'+COMMAND.CN + " <message> - Sends a one time public notice.\n\n";
 	cmdlist += '/'+COMMAND.CND + " <message> - Sends a one time public notice with divider lines.\n\n";
@@ -742,13 +735,13 @@ function getCommandList()
 	cmdlist += '/'+COMMAND.EMLIST + " - Sends a list of ticket holders email addresses to the chat.\n";
 	*/
 	cmdlist += '/'+COMMAND.MON + " - Toggles monitoring of gray message muting.\n\n";
-	cmdlist += '/'+COMMAND.TON + " - Turns on torture notices.\n\n";
-	cmdlist += '/'+COMMAND.TOFF + " - Turns off torture notices.\n\n";
+	cmdlist += '/'+COMMAND.TON + " - Enables torture notices.\n\n";
+	cmdlist += '/'+COMMAND.TOFF + " - Disables torture notices.\n\n";
 	cmdlist += '/'+COMMAND.ABOUT + " - Shows EzraBot's version info.\n\n"+dashLine;
 	return cmdlist;
 }
 
-function getHiddenCommandList() {
+getHiddenCommandList = function() {
 	
 	var hiddencmdlist = "\n----- EzraBot Dev-only Commands List -----\n\n";
 	hiddencmdlist += '/'+app.CD + " - Quick overview for debugging.\n\n";
@@ -756,20 +749,20 @@ function getHiddenCommandList() {
 	return hiddencmdlist;
 }
 
-function showVersionInfo() {
+showVersionInfo = function() {
 
-	var versioninfo = "\n* ----- VERSION INFO -----";
+	var versioninfo = "\n* ----- Version info -----";
 	versioninfo += "\n* App name: "+app.name;
-	versioninfo += "\n* Author: "+app.dhn444+" (aka "+app.dhn+")";
+	versioninfo += "\n* Author: "+app.dhn;
 	versioninfo += "\n* Version: "+app.version+" - Date: "+app.builddate+" / Build type: "+app.buildtype;
 	versioninfo += "\n* Originally based on acrazyguy's 'Kati3Bot' and his other apps/bots.";
 	return versioninfo;
 	
 }
 
-function cleanUpChat() {
+cleanUpChat = function() {
 	
-		var chatcleanup = "------------------------------------------------------------";
+	var chatcleanup = "------------------------------------------------------------";
 	chatcleanup += "\n*";
 	chatcleanup += "\n*";
 	chatcleanup += "\n* Cleaning up chat...";
@@ -865,7 +858,7 @@ function cleanUpChat() {
 	return chatcleanup;
 }
 
-function user(command,user,sendpass)
+user = function(command,user,sendpass)
 {
 	if ((command == 'add') && (!cbjs.arrayContains(ticketList,user)))
 		ticketList.push(user);
@@ -888,7 +881,7 @@ function printObject(o)
 */
 
 
-function checkmsg(msg)  
+checkmsg = function(msg)  
 {
 	var u = msg['user'];
 	var tmpmsg = msg['m'];
@@ -977,11 +970,11 @@ function checkmsg(msg)
 }
 
 
-function init()
+init = function()
 {
 	//user('add',roomHost,false); // add broadcaster to the ticketlist
 	
-	var appInfo = dashLine+"\n* "+app.name+" by '"+app.dhn444+"' (aka '"+app.dhn+"') has started.";
+	var appInfo = dashLine+"\n* "+app.name+" by '"+app.dhn+"' has started.";
 	appInfo += "\n* Version: "+app.version+" / "+app.buildtype+" build";
 	appInfo += "\n* Build date and time: "+app.builddate+" @ "+app.buildtime;
 	appInfo += "\n* Type /ebhelp for a list of available commands.\n"+dashLine;
@@ -1005,7 +998,5 @@ function init()
 }
 
 
-/*** Ok, let's kick this off ***/
+/***** Fire this beauty up. *****/
 init();
-
-/*** No fancy ASCII art here ***/
