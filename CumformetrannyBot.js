@@ -1,11 +1,11 @@
 /***********************************************************
- *          Title: 	EzraBot
- *             By:	DeHaan_
+ *          Title: 	trannybot
+ *             By:	CLEWIS_
  *
- *         Author: 	'dehaan_'
+ *         Author: 	'clewis_'
  *       Originally based on acrazyguy's "Kati3Bot."
  * 
- *  	  Version: 	1.1.0 (2015.05.23)
+ *  	  Version: 	1.1.0 (2019.05.23)
  *  GitHub branch:	Stable ("master") branch
  *     Build type:      Stable (CB live site)
  **********************************************************/
@@ -13,15 +13,15 @@
 /********** App Data **********/
 var app =
 {
-	name	  : "'EzraBot'",		/* Script name						*/
+	name	  : "'TrannyBot'",		/* Script name						*/
 	type	  : 'Bot',			/* Script type: bot|app					*/
 	version	  : '1.1.0',			/* Internal: Script version number			*/ 
-//	revision  : 'null',			/* Internal: Script revision				*/
+//	revision  : 'broadcaster control panel',			/* Internal: Script revision				*/
 	buildtype : 'stable',	 		/* Internal: Script build type (stable or dev)		*/
   	builddate : 'May 23, 2015',  	  	/* Internal: Script build date				*/
   	buildtime : '02:45:00 BRT (GMT-0300)', 	/* Internal: Script build time				*/
-	dhn	  : 'dehaan_', 			/* Developer						*/
-	ez	  : 'ezra',			/* Broadcaster						*/
+	dhn	  : 'clewis_', 			/* Developer						*/
+	ez	  : 'ericka',			/* Broadcaster						*/
 	CD	  : 'dump'			/* Debug: quick overview. Only accessible by the dev	*/
 };
 
@@ -135,7 +135,7 @@ cb.settings_choices =
 		choice1: 'Yes',
 		choice2: 'No',
 	defaultValue: 'No',
-	label: "Use 'EzraBot' to sell advance tickets for a future 'CrazyTicket' show?"
+	label: "Use 'trannyBot' to sell advance tickets for a future 'CrazyTicket' show?"
 },
 {
 	name: 'buyin',
